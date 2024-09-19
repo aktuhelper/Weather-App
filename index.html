@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Weather App</title>
+    <style>
+        body {
+            background: url('https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNjUyOXwwfDF8c2VhcmNofDV8fHdlYXRoZXJ8ZW58MHx8fHwxNjYyNjk3NTMx&ixlib=rb-1.2.1&q=80&w=1080') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+        }
+        h1{
+            color:black;
+        }
+        .main {
+            text-align: center;
+            margin-top: 100px;
+        }
+        .tempinfo {
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        .top_layer {
+            margin-bottom: 20px;
+        }
+        .middle_layer {
+            font-size: 2.5em;
+        }
+        #submitBtn {
+            background-color: #28a745;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #submitBtn:hover {
+            background-color: #218838;
+        }
+        input {
+            border-radius: 5px;
+            border: none;
+            padding: 10px;
+        }
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 200, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+  <div class="container">
+    <div class="main">
+      <h1 class="display-4">Weather App</h1>
+      <form class="temp_form">
+          <input type="text" id="cityName" class="form-control mb-2" placeholder="Enter your city name" autocomplete="off">
+          <button type="submit" id="submitBtn" class="btn btn-success mt-2">Search</button>
+      </form>
+    </div>
+    <div class="tempinfo">
+      <div class="top_layer">
+          <p id="day" class="h4">Tuesday</p>
+          <p id="today_date" class="h5">13 Oct</p>
+      </div>
+      <div class="main_layer">
+          <p id="get_city" class="h5">Get data here..</p>
+          <div class="middle_layer data_hide">
+              <p id="temp" class="h1"><span id="temp_real">0</span><sup>o</sup>C</p>
+              <p id="temp_status"><i class="fa-solid fa-cloud"></i></p>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    const day = document.getElementById('day');
+    const today_date = document.getElementById('today_date');
+    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+    const getcurrDay = () => {
+        let currTime = new Date();
+        let days = weekday[currTime.getDay()];
+        day.innerText = days; 
+    };
+
+    const getcurrTime = () => {
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        var now = new Date();
+        var month = months[now.getMonth()];
+        var date = now.getDate();
+        today_date.innerText = `${month} ${date}`;
+    };
+
+    getcurrDay();
+    getcurrTime();
+  </script>
+</body>
+</html>
